@@ -1,30 +1,15 @@
-// function solicitarNombre(){
-//     let nombreIngresado   = prompt("Ingresar nombre");
-//     alert("El nombre ingresado es " + nombreIngresado);
-// } 
 
-// solicitarNombre();
+//Calcular Iva a través de una función
 
-// function calculadora(primerNumero, segundoNumero, operacion) {
-//     switch (operacion) {
-//         case "+":
-//             return primerNumero + segundoNumero;
-//             break;
-//         case "-":
-//             return primerNumero - segundoNumero;
-//             break;
-//         case "*":
-//             return primerNumero * segundoNumero;
-//             break;
-//         case "/":
-//             return primerNumero / segundoNumero;
-//             break;
-//         default:
-//             return 0;
-//             break;
-//     }
-// }
-// console.log(calculadora(10, 5, "-"));
+function calcularIva(){
+    let precio = parseFloat(prompt("Ingresar el precio"));
+    let calcularIva = precio * 0.21;
+    console.log ("El precio con Iva es " + calcularIva);
+} 
+
+calcularIva();
+
+
 
 
 
