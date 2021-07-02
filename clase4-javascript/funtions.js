@@ -1,12 +1,12 @@
 function calcularIva(){
     let precio = parseFloat(prompt("Ingresar el precio"));
     let iva = precio * 0.21;
-    console.log ("El precio con Iva es " + iva);
-    return iva;
+    let precioConIva = precio + iva;
+    console.log ("El precio con IVA es " + precioConIva);
+    return precioConIva;
 } 
 
 calcularIva();
-
 
 
 
