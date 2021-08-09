@@ -94,10 +94,20 @@
 
 // Un ejercicio sencillo para cumplir la entrega
 // DIVIDIMOS DE FORMA DECRECIENTE UN NUMERO INGRESADO POR EL USUARIO EN UN BUCLE DEL 1 AL 10
-let ingreseNumero=parseInt(prompt("ingrese un numero"));
+// let ingreseNumero=parseInt(prompt("ingrese un numero"));
 
-for(let i=10; i>=1; i--){
-    let division= ingreseNumero / i;
-    console.log(ingreseNumero+"/"+i+"="+division);
+// for(let i=10; i>=1; i--){
+//     let division= ingreseNumero / i;
+//     console.log(ingreseNumero+"/"+i+"="+division);
 
+// }
+
+for (let i=1; i<=3; i++){
+    let nombre= prompt("Ingrese nombre del paciente");
+
+    alert("Turno N°" + i + "Nombre: " + nombre);
+
+    if(i===3){
+        alert("No hay más turnos");
+    }
 }
