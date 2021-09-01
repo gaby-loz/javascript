@@ -35,30 +35,28 @@ const carrito = [];
 
 
 function comprarCurso(){
+    
+
     const seleccionado = cursosDisponibles.find(curso => curso.id == this.id);
     carrito.push(seleccionado);
-    
-    // console.log(seleccionado);
 
-let innerCarrito = '';
-for (const curso of carrito){
-    innercarrito = innerCarrito + `<p>${curso.nombreCurso} 
-                                    ${curso.precioCurso}</p>`
-    
-}
+    console.log(seleccionado);
 
-const divCarrito = document.getElementById("carrito");
-divCarrito.innerHTML= innerCarrito;
+    let innerCarrito = '';
+    for (const curso of carrito){
+        innercarrito = innerCarrito + `<p>${curso.nombreCurso} - ${curso.precioCurso}</p>`
+    }
 
+    const divCarrito = document.getElementById("carrito");
+    divCarrito.innerHTML = innercarrito;
 
-
-console.log("respuesta compra");
-
+    console.log("respuesta compra")
 }
 
 for (const boton of botones){
-    boton.addEventListener("click", comprarCurso);
-    
+    boton.addEventListener("click", comprarCurso)
 }
+   
+    
 
 
