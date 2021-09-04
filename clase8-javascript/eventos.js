@@ -44,11 +44,11 @@ function comprarCurso(){
 
     let innerCarrito = '';
     for (const curso of carrito){
-        innercarrito = innerCarrito + `<p>${curso.nombreCurso} - ${curso.precioCurso}</p>`
+        innerCarrito = innerCarrito + `<p>${curso.nombreCurso} - ${curso.precioCurso}</p>`
     }
 
     const divCarrito = document.getElementById("carrito");
-    divCarrito.innerHTML = innercarrito;
+    divCarrito.innerHTML = innerCarrito;
 
     console.log("respuesta compra")
 }
