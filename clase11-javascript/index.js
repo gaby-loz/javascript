@@ -16,9 +16,9 @@ class cursos{
         this.cantidad= cantidad || 1;
     }
 
-    // agregarCantidad(valor){
-    //     this.cantidad += valor;
-    // }
+    agregarCantidad(valor){
+        this.cantidad += valor;
+    }
 }
 
 cursosDisponibles.push(new cursos ("1", "Diferencia sexual", 50, categorias[0]));
