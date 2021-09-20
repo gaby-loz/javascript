@@ -25,6 +25,9 @@ function cursosjquerry(cursosDisponibles, id){
 function comprarCursos(e){
     e.preventDefault();
 
+ //PREVENIR LA PROPAGACION DEL EVENTO
+ e.stopPropagation();
+
 //OBTENER ID DEL BOTÓN PRESIONADO
 const idCurso = e.target.id;
 
@@ -40,27 +43,15 @@ if (seleccionado == undefined){
     seleccionado.agregarCantidad(1);
 }
 
-// carrito.push(seleccionado);
-
-// //FUNCION QUE SE EJECUTA CUANDO SE CARGA EL DOM
-// $(document).ready (function(){
-//     if("carrito" in localStorage){
-//         const arrayLiterales = JSON.parse(localStorage.getItem("carrito"));
-//         for(const literal of arrayLiterales){
-
-//             carrito.push(new cursos(literal.id, literal.nombreCurso, literal.precioCurso, literal.categoria))
-        
-//         }
-        
-//     }
-// });
-
 //GUARDAR EN LOCALSTORAGE 
 localStorage.setItem("carrito", JSON.stringify(carrito));
 
 //GENERAR SALIDA CURSO
 carritoUI(carrito);
 }
+// carrito.push(seleccionado);
+
+
 
 //FUNCION PARA RENDERIZAR INTERFAZ DEL CARRITO
 function carritoUI(cursosDisponibles){
@@ -74,10 +65,17 @@ function carritoUI(cursosDisponibles){
         $('#carritoCursos').append(registroCarrito(curso));
     }
 
+    //AGREGAR TOTAL
+$("#carritoCursos").append (`<p id="totalCarrito"> TOTAL ${totalCarrito(cursosDisponibles)}</p>`);
+
+    //AGREGAR TOTAL
+$("#carritoCursos").append (`<div id="divConfirmar" class="text-center"><button id="btnConfirmar" class="btn btn-success">CONFIRMAR</button></div>`)
+
     //ASOCIAR EVENTOS A LA INTERFAZ GENERADA
     $(".btn-add").click(addCantidad);
     $(".btn-delete").click(eliminarCarrito);
     $(".btn-restar").click(restarCantidad);
+    $("#btnConfirmar").click(confirmarCompra);
 }
 
 //FUNCION PARA GENERAR LA ESTRUCTURA DEL REGISTRO HTML
@@ -93,34 +91,25 @@ function registroCarrito(curso) {
                     </p>`
 }
 
-//FUNCION PARA RENDERIZAR UN SELECT USANDO UN ARRAY
-function renderSelect (lista, id){
-    
-    //VACIAR CONTENIDO DE LA LISTA
-    $(id).empty();
-
-    //GENERAMOS UN OPTION POR CADA ELEMENTO DE LA LISTA
-    for (const item of lista){
-        $(id).append(`<option value='${item}'>${item}</option>`)
-    }
-}
 
 //MANEJADOR PARA ELIMINAR CARRITO
 function eliminarCarrito(e){
     console.log("target" +e.target.id);
-    let posicion= carrito.findIndex(c => c.id == e.target.id);
+    let posicion= carrito.findIndex(p => p.id == e.target.id);
     carrito.splice(posicion, 1);
     console.log(carrito);
 
+    //GENERAR NUEVAMENTE INTERFAZ
     carritoUI(carrito);
 
+    //GUARDAR EN STORAGE EL NUEVO CARRITO
     localStorage.setItem("carrito", JSON.stringify(carrito));
 
 }
 
 //MANEJADOR PARA AGREGAR CANTIDAD
 function addCantidad() {
-    let curso = carrito.find(c => c.id == this.id);
+    let curso = carrito.find(p => p.id == this.id);
     curso.agregarCantidad(1);
     $(this).parent().children()[1].innerHTML = curso.cantidad;
     $(this).parent().children()[2].innerHTML = curso.subtotal();
@@ -129,9 +118,9 @@ function addCantidad() {
 localStorage.setItem("carrito", JSON.stringify(carrito));
 }
 
-//MANEJADOR PARA SUMAR CANTIDAD
+//MANEJADOR PARA RESTAR CANTIDAD
 function restarCantidad(){
-    let curso =carrito.find(c => c.id == this.id);
+    let curso =carrito.find(p => p.id == this.id);
 
     if(curso.cantidad > 1){
         curso.agregarCantidad(-1);
@@ -151,3 +140,28 @@ function restarCantidad(){
 
 }
 
+//FUNCION PARA GENERAR OPCIONES DE UN SELECT
+function selectUI (lista, selector){
+    
+    //VACIAR OPCIONES EXISTENTES
+    $(selector).empty();
+
+    //RECORRER LISTA Y AÑADIR UNA OPCIÓN POR CADA ELEMENTO
+    lista.forEach(element => {
+        $(selector).append(`<option value="${element}">${element}</option>`)
+    });
+    $(selector).prepend(`<option value="TODOS" selected>TODOS</option>`);
+}
+
+//FUNCION PARA OBTENER EL PRECIO TOTAL DEL CARRITO
+function totalCarrito(carrito) {
+    console.log(carrito);
+    let total = 0;
+    carrito.forEach(p => total += p.subtotal());
+    return total.toFixed(2);
+}
+
+//FUNCION PARA ENVIAR AL BACKEND LA ORDEN DE PROCESAMIENTO DE COMPRA
+function confirmarCompra (){
+
+}
