@@ -1,0 +1,21 @@
+[
+    {
+        "title": "Diferencia sexual",
+        "id": 1,
+        "precio": 50,
+        "img": "img/img-curso-diferencia-sexual.jpg"
+    },
+    {
+        "title": "Introducción a Zizek",
+        "id": 2,
+        "precio": 50,
+        "img": "img/img-curso-zizek.jpg"
+    },
+    {
+        "title": "Crítica a Paul B. Preciado",
+        "id": 3,
+        "precio": 50,
+        "img": "img/img-curso-paul-b-preciado.jpg"
+    }
+
+]

@@ -1,0 +1,24 @@
+[
+    {
+        "nombreCurso": "Diferencia sexual",
+        "id": 1,
+        "precioCurso": 50,
+        "categoria": "Sexualidad",
+        "img": "img-curso-diferencia-sexual.jpg"
+    },
+    {
+        "nombreCurso": "Introducción a Zizek",
+        "id": 2,
+        "precioCurso": 50,
+        "categoria": "Sexualidad",
+        "img": "img-curso-zizek.jpg"
+    },
+    {
+        "nombreCurso": "Crítica a Paul B. Preciado",
+        "id": 3,
+        "precioCurso": 50,
+        "categoria": "Filosofía Contemporanea",
+        "img": "img-curso-paul-b-preciado.jpg"
+    }
+
+]

@@ -1,10 +1,12 @@
-const urlGet = "https://jsonplaceholder.typicode.com/posts";
-
-$.get(urlGet, function(respuesta, estado){
+//CARGAR DATA DE ORIGEN LOCAL
+$.get("data/api.json", function(datos, estado){
+    console.log(datos);
+    console.log(estado);
     if(estado=="success"){
-        for(const elemento of respuesta){
-            console.log(elemento);
-            $('body').append(elemento.title);
+        for(const literal of datos){
+            cursosDisponibles.push(new cursos(literal.id, literal.nombreCurso, literal.precioCurso, literal.categoria, literal.cantidad, literal.img));
         }
     }
+    console.log(cursosDisponibles);
+    cursosjquerry(cursosDisponibles, '#cursoContenerdor');
 });

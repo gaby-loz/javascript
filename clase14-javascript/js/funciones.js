@@ -5,7 +5,7 @@ function cursosjquerry(cursosDisponibles, id){
 
     for (const curso of cursosDisponibles){
         $(id).append(`<div class="card" style="width:18rem; padding:2rem;">
-                    <img src="http://via.placeholder.com/150" class="card-img-rop" alt="imagen"></img>
+                    <img class="img-fluid">${curso.img}</img>
                     <div class="card-body>
                     <h5 class="card-title">${curso.nombreCurso}</h5>
                     <p class="card-text">${curso.precioCurso}</p>
@@ -44,7 +44,7 @@ if (seleccionado == undefined){
 }
 
 //GUARDAR EN LOCALSTORAGE 
-localStorage.setItem("carrito", JSON.stringify(carrito));
+// localStorage.setItem("carrito", JSON.stringify(carrito));
 
 //GENERAR SALIDA CURSO
 carritoUI(carrito);
