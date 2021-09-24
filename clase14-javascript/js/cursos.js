@@ -15,6 +15,6 @@ class cursos{
     }
 
     subtotal (){
-        return this.cantidad * this.precio;
+        return this.cantidad * this.precioCurso;
     }
 }
