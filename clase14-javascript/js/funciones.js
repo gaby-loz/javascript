@@ -5,7 +5,7 @@ function cursosjquerry(cursosDisponibles, id){
 
     for (const curso of cursosDisponibles){
         $(id).append(`<div class="card" style="width:18rem; padding:2rem;">
-                    <img class="img-fluid">${curso.img}</img>
+                    <img src="${curso.img}" class="img-fluid"></img>
                     <div class="card-body>
                     <h5 class="card-title">${curso.nombreCurso}</h5>
                     <p class="card-text">${curso.precioCurso}</p>
@@ -44,12 +44,12 @@ if (seleccionado == undefined){
 }
 
 //GUARDAR EN LOCALSTORAGE 
-// localStorage.setItem("carrito", JSON.stringify(carrito));
+localStorage.setItem("carrito", JSON.stringify(carrito));
 
 //GENERAR SALIDA CURSO
 carritoUI(carrito);
 }
-// carrito.push(seleccionado);
+
 
 
 
@@ -113,6 +113,9 @@ function addCantidad() {
     curso.agregarCantidad(1);
     $(this).parent().children()[1].innerHTML = curso.cantidad;
     $(this).parent().children()[2].innerHTML = curso.subtotal();
+
+    //MODIFICAR TOTAL
+    $("#totalCarrito").html(`TOTAL ${totalCarrito(carrito)}`);
 
 //GUARDAR EN STORAGE
 localStorage.setItem("carrito", JSON.stringify(carrito));
