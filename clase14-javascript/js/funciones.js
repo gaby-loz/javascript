@@ -35,7 +35,7 @@ const idCurso = e.target.id;
 const seleccionado = carrito.find(p => p.id == idCurso);
 
 //SI NO SE ENCONTRO EL ID BUSCAR CORRESPONDIENTE AL ID
-if (seleccionado == undefined){
+if(seleccionado == undefined){
     
     carrito.push(cursosDisponibles.find(p => p.id == idCurso));
 } else{
@@ -56,7 +56,7 @@ carritoUI(carrito);
 //FUNCION PARA RENDERIZAR INTERFAZ DEL CARRITO
 function carritoUI(cursosDisponibles){
     //CAMBIAR INTERIOR DEL INDICADOR DE CANTIDAD DE CURSOS
-    $('#carritoCantidad').html (cursosDisponibles.length);
+    $('#carritoCantidad').html(cursosDisponibles.length);
 
     //VACIAR EL INTERIOR DEL CUERPO DEL CARRITO
     $('#carritoCursos').empty();
@@ -66,10 +66,10 @@ function carritoUI(cursosDisponibles){
     }
 
     //AGREGAR TOTAL
-$("#carritoCursos").append (`<p id="totalCarrito"> TOTAL ${totalCarrito(cursosDisponibles)}</p>`);
+$("#carritoCursos").append(`<p id="totalCarrito"> TOTAL ${totalCarrito(cursosDisponibles)}</p>`);
 
     //AGREGAR TOTAL
-$("#carritoCursos").append (`<div id="divConfirmar" class="text-center"><button id="btnConfirmar" class="btn btn-success">CONFIRMAR</button></div>`)
+$("#carritoCursos").append(`<div id="divConfirmar" class="text-center"><button id="btnConfirmar" class="btn btn-success">CONFIRMAR</button></div>`)
 
     //ASOCIAR EVENTOS A LA INTERFAZ GENERADA
     $(".btn-add").click(addCantidad);
@@ -79,7 +79,7 @@ $("#carritoCursos").append (`<div id="divConfirmar" class="text-center"><button 
 }
 
 //FUNCION PARA GENERAR LA ESTRUCTURA DEL REGISTRO HTML
-function registroCarrito(curso) {
+function registroCarrito(curso){
             return  `<p> ${curso.nombreCurso} 
                     <span class="badge bg-warning"> Precio Unitario: $ ${curso.precioCurso}</span>
                     <span  class="badge bg-dark">${curso.cantidad}</span>
@@ -94,7 +94,7 @@ function registroCarrito(curso) {
 
 //MANEJADOR PARA ELIMINAR CARRITO
 function eliminarCarrito(e){
-    console.log("target" +e.target.id);
+    console.log(e.target.id);
     let posicion= carrito.findIndex(p => p.id == e.target.id);
     carrito.splice(posicion, 1);
     console.log(carrito);
@@ -144,7 +144,7 @@ function restarCantidad(){
 }
 
 //FUNCION PARA GENERAR OPCIONES DE UN SELECT
-function selectUI (lista, selector){
+function selectUI(lista, selector){
     
     //VACIAR OPCIONES EXISTENTES
     $(selector).empty();
@@ -165,6 +165,6 @@ function totalCarrito(carrito) {
 }
 
 //FUNCION PARA ENVIAR AL BACKEND LA ORDEN DE PROCESAMIENTO DE COMPRA
-function confirmarCompra (){
+function confirmarCompra(){
 
 }

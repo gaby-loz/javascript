@@ -8,7 +8,7 @@ class cursos{
         this.precioCurso = parseFloat(precioCurso);
         this.categoria = categoria;
         this.cantidad = cantidad || 1;
-        this.img = img;
+        // this.img = img;
     }
 
     agregarCantidad(valor){
@@ -16,6 +16,6 @@ class cursos{
     }
 
     subtotal (){
-        return this.cantidad * this.precio;
+        return this.cantidad * this.precioCurso;
     }
 }

@@ -1,12 +1,12 @@
 
 // //FUNCION QUE SE EJECUTA CUANDO SE CARGA EL DOM
-$(document).ready (function(){
+$(document).ready(function(){
     if("carrito" in localStorage){
         const arrayLiterales = JSON.parse(localStorage.getItem("carrito"));
         for(const literal of arrayLiterales){
 
             carrito.push(new cursos(literal.id, literal.nombreCurso, literal.precioCurso, literal.categoria, literal.cantidad));
-        
+         
         }
         carritoUI(carrito);
         
@@ -33,7 +33,7 @@ selectUI(categorias, "#filtroCategoria");
 $('#filtroCategoria').change(function(e){
     const value = this.value;
 
-    $('#cursoContenedor').fadeOut (600, function(){
+    $('#cursoContenedor').fadeOut(600, function(){
         if(value == 'TODOS'){
             cursosjquerry(cursosDisponibles, '#cursoContenedor');
         }else {

@@ -1,5 +1,4 @@
 
-
 //Instanciando cusos
 
 cursosDisponibles.push(new cursos ("1", "Diferencia sexual", 50, categorias[0]));
