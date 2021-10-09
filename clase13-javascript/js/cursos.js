@@ -8,7 +8,6 @@ class cursos{
         this.precioCurso = parseFloat(precioCurso);
         this.categoria = categoria;
         this.cantidad = cantidad || 1;
-        // this.img = img;
     }
 
     agregarCantidad(valor){

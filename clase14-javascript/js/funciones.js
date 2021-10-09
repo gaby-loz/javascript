@@ -71,7 +71,8 @@ $("#carritoCursos").append(`<p id="totalCarrito"> TOTAL ${totalCarrito(cursosDis
     //AGREGAR TOTAL
 $("#carritoCursos").append(`<div id="divConfirmar" class="text-center"><button id="btnConfirmar" class="btn btn-success">CONFIRMAR</button></div>`)
 
-    //ASOCIAR EVENTOS A LA INTERFAZ GENERADA
+
+//ASOCIAR EVENTOS A LA INTERFAZ GENERADA
     $(".btn-add").click(addCantidad);
     $(".btn-delete").click(eliminarCarrito);
     $(".btn-restar").click(restarCantidad);
@@ -143,6 +144,8 @@ function restarCantidad(){
 
 }
 
+
+
 //FUNCION PARA GENERAR OPCIONES DE UN SELECT
 function selectUI(lista, selector){
     
@@ -167,4 +170,32 @@ function totalCarrito(carrito) {
 //FUNCION PARA ENVIAR AL BACKEND LA ORDEN DE PROCESAMIENTO DE COMPRA
 function confirmarCompra(){
 
-}
+    // REALIZAMOS LA PETICION POST
+    const URLPOST = 'http://jsonplaceholder.typicode.com/posts';
+  
+    // INFORMACION A ENVIAR
+    const DATA = {productos: JSON.stringify(carrito), total: totalCarrito(carrito)}
+  
+    // PETICION POST CON AJAX
+    $.post(URLPOST, DATA, function(respuesta,estado){
+      console.log(respuesta);
+        console.log(estado);
+        if(estado == 'success'){
+          //MOSTRAMOS NOTIFICACION DE CONFIRMACIÓN (CON ANIMACIONES)
+          $("#notificaciones").html(`<div class="alert alert-sucess alert-dismissible fade show" role="alert">
+                      <strong>COMPRA CONFIRMADA!</strong> Comprobante Nº ${respuesta.id}.
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                      </div>`).fadeIn().delay(2000);
+          //VACIAR CARRITO;
+          carrito.splice(0, carrito.length);
+          //SOBREESCRIBIR ALMACENADO EN STORAGE
+          localStorage.setItem("CARRITO",'[]');
+          //VACIAR CONTENIDO DEL MENU
+          $('#carritoCursos').empty();
+          //VOLVER INDICADOR A 0
+          $('#carritoCantidad').html(0);
+        }
+    });
+  }

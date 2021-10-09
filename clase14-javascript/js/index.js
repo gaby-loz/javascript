@@ -46,7 +46,7 @@ $('#filtroCategoria').change(function(e){
 
 
 $(".btn-compra").click(function(e){
-    $("#cantidadCursos").show(800);
+    $("#carritoCantidad").show(800);
 })
 
 
